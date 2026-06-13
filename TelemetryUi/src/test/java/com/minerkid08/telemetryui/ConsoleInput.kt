@@ -1,6 +1,6 @@
 package com.minerkid08.telemetryui
 
-class ConsoleInput: InputManager
+class ConsoleInput : InputManager
 {
 	private var up = false;
 	private var down = false;
@@ -9,14 +9,20 @@ class ConsoleInput: InputManager
 
 	fun update()
 	{
+		up = false;
+		down = false;
+		left = false;
+		right = false;
 		val str = readln();
-		if(str[0] == 'w')
+		if (str.isEmpty())
+			return;
+		if (str[0] == 'w')
 			up = true;
-		if(str[0] == 's')
+		if (str[0] == 's')
 			down = true;
-		if(str[0] == 'a')
+		if (str[0] == 'a')
 			left = true;
-		if(str[0] == 'd')
+		if (str[0] == 'd')
 			right = true;
 	}
 
@@ -26,7 +32,7 @@ class ConsoleInput: InputManager
 	override fun getRight() = right;
 }
 
-class ConsoleOutput: Output
+class ConsoleOutput : Output
 {
 	override fun addLine(line: String)
 	{
@@ -35,6 +41,7 @@ class ConsoleOutput: Output
 
 	override fun endFrame()
 	{
+
 	}
 }
 
@@ -42,19 +49,76 @@ fun main()
 {
 	val input = ConsoleInput();
 	val output = ConsoleOutput();
-	val ui = UI(input, output);
+	val ui = Ui(input, output, 40);
 
-	val a = FloatPtr(0.0f);
-	val b = IntPtr(0);
-	val c = BoolPtr(false);
+	/*val a = IntPtr();
+val b = IntPtr();
+val c = IntPtr();
+val d = FloatPtr();
+val e = BoolPtr();
+val f = IntPtr();
 
-	while(true)
+val items = ArrayList<String>();
+items.add("thing 1");
+items.add("thing 2");
+items.add("thing 3");
+items.add("thing 4");
+items.add("thing 5");
+
+while (true)
+{
+	input.update();
+	if (ui.button("exit"))
+		return;
+	ui.dropdown("items", f, items);
+
+	ui.intInput("a", a, 1);
+	ui.intInput("a1", a, 1);
+	ui.intInput("a2", a, 1);
+	ui.intInput("a3", a, 1);
+	ui.intInput("a4", a, 1);
+	ui.intInput("a5", a, 1);
+	ui.intInput("a6", a, 1);
+	ui.intInput("a7", a, 1);
+	ui.intInput("a8", a, 1);
+	ui.intInput("a9", a, 1);
+	ui.intInput("a10", a, 1);
+	ui.intInput("a11", a, 1);
+	ui.intInput("a12", a, 1);
+	ui.seperator();
+	if (ui.treeNode("something", false))
 	{
-		ui.update();
-		if(ui.button("exit"))
-			return;
-		ui.floatInput("a", a, 1.0f);
+		if (b.value > 2)
+			ui.intInput("c", c, 1);
 		ui.intInput("b", b, 1);
-		ui.checkbox("c", c);
+		ui.text("text");
+		if (ui.treeNode("something else", false))
+		{
+			ui.floatInput("d", d, 0.5f);
+			ui.sameLine();
+			ui.checkbox("e", e);
+			ui.seperator();
+			ui.text("some text :)");
+			ui.treePop();
+		}
+		ui.treePop();
+	}
+	ui.update();
+}*/
+
+	val step = IntPtr();
+	val thing = IntPtr();
+
+	while (true)
+	{
+
+		input.update();
+		if (ui.button("exit"))
+			return;
+
+	ui.intInput("step", step, 1);
+		ui.intInput("thing", thing, step.value);
+
+		ui.update();
 	}
 }

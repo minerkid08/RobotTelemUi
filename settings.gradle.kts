@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "TelemUi"
 include(":app")
 include(":TelemetryUi")
+include(":TelemUi")
